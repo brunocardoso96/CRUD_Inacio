@@ -2,9 +2,6 @@ package professor;
 
 import javax.swing.JOptionPane;
 
-import professor.JDBCInsert_Professor;
-import professor.JDBCSelect_Professor;
-
 public class Inclusao_Porfessor {
 
 	public static void main(String[] args) {
@@ -18,8 +15,8 @@ public class Inclusao_Porfessor {
 		*/
 		
 		String paramNome = JOptionPane.showInputDialog("Entre com o nome do Professor: ");
-		JDBCInsert_Professor.insert(paramNome);
-		JDBCSelect_Professor.getAll();
+		Banco_Professor.Insert(paramNome);
+		Banco_Professor.Select();
 	}
 
 }

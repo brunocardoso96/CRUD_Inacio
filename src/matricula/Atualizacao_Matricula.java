@@ -18,6 +18,7 @@ public class Atualizacao_Matricula {
 		Long paramAlunoId = Long.parseLong(JOptionPane.showInputDialog("Entre com o novo Aluno_id: "));
 		
 		Banco_Matricula.Update(paramId, paramCursoId, paramAlunoId);
+		
 		Banco_Matricula.Select();
 		
 	}

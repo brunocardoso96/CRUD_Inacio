@@ -2,18 +2,15 @@ package professor;
 
 import javax.swing.JOptionPane;
 
-import professor.JDBCDelete_Professor;
-import professor.JDBCSelect_Professor;
-
 public class Exclusao_Professor {
 
 	public static void main(String[] args) {
 		
-		JDBCSelect_Professor.getAll();
+		Banco_Professor.Select();
 		Long paramId = Long.parseLong(JOptionPane.showInputDialog("Entre com o id: "));
 		
-		JDBCDelete_Professor.delete(paramId);
-		JDBCSelect_Professor.getAll();
+		Banco_Professor.Delete(paramId);
+		Banco_Professor.Select();
 	}
 
 }
