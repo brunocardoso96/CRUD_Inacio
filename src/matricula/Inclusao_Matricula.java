@@ -3,6 +3,7 @@ package matricula;
 import javax.swing.JOptionPane;
 
 import aluno.Banco_Aluno;
+import curso.Banco_Curso;
 import matricula.JDBCInsert_Matricula;
 import matricula.JDBCSelect_Matricula;
 
@@ -18,7 +19,7 @@ public class Inclusao_Matricula {
 		JDBCInsert.insert(id, paramFirstName, paramLastName, paramEmail);
 		*/
 		
-		curso.JDBCSelect_Curso.getAll();
+		Banco_Curso.Select();
 		Long paramCursoId = (long) Integer.parseInt(JOptionPane.showInputDialog("Entre com o id do curso: "));
 		Banco_Aluno.Select();
 		Long paramAlunoId = (long) Integer.parseInt(JOptionPane.showInputDialog("Entre com o id do aluno: "));

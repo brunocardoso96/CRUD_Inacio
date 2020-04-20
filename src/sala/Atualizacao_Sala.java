@@ -2,7 +2,7 @@ package sala;
 
 import javax.swing.JOptionPane;
 
-import curso.JDBCSelect_Curso;
+import curso.Banco_Curso;
 
 public class Atualizacao_Sala {
 
@@ -14,7 +14,7 @@ public class Atualizacao_Sala {
 		JDBCSelect_Sala.getAll();
 		Long paramId = Long.parseLong(JOptionPane.showInputDialog("Entre com o id a ser atualizado: "));
 		String paramNome = JOptionPane.showInputDialog("Entre com a nova Sala: ");
-		JDBCSelect_Curso.getAll();
+		Banco_Curso.Select();
 		Long paramCurso = Long.parseLong(JOptionPane.showInputDialog("Entre com a novo Curso: "));
 
 		

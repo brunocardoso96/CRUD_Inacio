@@ -3,7 +3,7 @@ package matricula;
 import javax.swing.JOptionPane;
 
 import aluno.Banco_Aluno;
-import curso.JDBCSelect_Curso;
+import curso.Banco_Curso;
 import matricula.JDBCSelect_Matricula;
 import matricula.JDBCUpdate_Matricula;
 
@@ -16,7 +16,7 @@ public class Atualizacao_Matricula {
 		*/
 		JDBCSelect_Matricula.getAll();
 		String paramId = JOptionPane.showInputDialog("Entre com o id a ser atualizado: ");
-		JDBCSelect_Curso.getAll();
+		Banco_Curso.Select();
 		Long paramCursoId = Long.parseLong(JOptionPane.showInputDialog("Entre com o novo Curso_id: "));
 		Banco_Aluno.Select();
 		Long paramAlunoId = Long.parseLong(JOptionPane.showInputDialog("Entre com o novo Aluno_id: "));
