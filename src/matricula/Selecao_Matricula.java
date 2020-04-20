@@ -6,7 +6,7 @@ public class Selecao_Matricula {
 
 	public static void main(String[] args) {
 		
-		JDBCSelect_Matricula.getAll();
+		Banco_Matricula.Select();
 
 	}
 
