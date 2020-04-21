@@ -1,10 +1,10 @@
-package aluno;
+package Model;
 
 import javax.swing.JOptionPane;
 
 import Controller.Banco_Aluno;
 
-public class Selecao_Aluno {
+public class ModelAluno {
 
 	public static void main(String[] args) {
 		
@@ -12,13 +12,13 @@ public class Selecao_Aluno {
 		
 		do {
 			
-			valor = Integer.parseInt((JOptionPane.showInputDialog(" ---- ALUNO ----\n "
+			valor = Integer.parseInt((JOptionPane.showInputDialog
+												(" ---- ALUNO ----\n "
 												+"1 - SELECT \n "
 												+"2 - INSERT\n "
 												+"3 - UPDATE\n "
 												+"4 - DELETE\n "
 												+"5 - SAIR")));
-			
 			switch (valor) {
 			
 				case 1:
@@ -37,7 +37,6 @@ public class Selecao_Aluno {
 					Banco_Aluno.Select();
 					Long paramId = Long.parseLong(JOptionPane.showInputDialog("Entre com o id a ser atualizado: "));
 					String paramNomeSelect = JOptionPane.showInputDialog("Entre com o novo nome: ");
-					
 					Banco_Aluno.Update(paramId, paramNomeSelect);
 					Banco_Aluno.Select();
 					break;
@@ -46,21 +45,18 @@ public class Selecao_Aluno {
 					
 					Banco_Aluno.Select();
 					Long paramIdSelect = Long.parseLong(JOptionPane.showInputDialog("Entre com o id: "));
-					
 					Banco_Aluno.Delete(paramIdSelect);
 					Banco_Aluno.Select();
 					break;
-					
-				case 5:
-					
-					break;
-					
+
 				default: 
 					if(valor < 1 || valor > 5) { 
 						JOptionPane.showMessageDialog(null, "Foi digitador um CODIGO Invalido");
 					}
 					break;
 			}
+			
+			
 			
 		} while( valor != 5 );
 		
