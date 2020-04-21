@@ -2,17 +2,17 @@ package sala;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Sala;
+
 public class Exclusao_Sala {
 
 	public static void main(String[] args) {
 		
-		JDBCSelect_Sala.getAll();
-		String paramId = JOptionPane.showInputDialog("Entre com o id: ");
+		Banco_Sala.Select();
+		Long paramId = Long.parseLong(JOptionPane.showInputDialog("Entre com o id: "));
 		
-		Long id = Long.parseLong(paramId);
-		
-		JDBCDelete_Sala.delete(id);
-		JDBCSelect_Sala.getAll();
+		Banco_Sala.Delete(paramId);
+		Banco_Sala.Select();
 	}
 
 }

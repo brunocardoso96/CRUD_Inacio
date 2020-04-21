@@ -1,12 +1,12 @@
 package sala;
 
-//import br.com.inaciojr9.bancosimples.banco.JDBCSelect;
+import Controller.Banco_Sala;
 
 public class Selecao_Sala {
 
 	public static void main(String[] args) {
 		
-		JDBCSelect_Sala.getAll();
+		Banco_Sala.Select();
 
 	}
 

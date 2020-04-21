@@ -1,10 +1,10 @@
-package sala;
+package Controller;
  
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
  
-public class Conexao_Sala {
+public class Conexao_Aluno {
  
 	// Para conexão ao oracle
 	/*

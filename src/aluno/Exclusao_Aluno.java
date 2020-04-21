@@ -2,6 +2,8 @@ package aluno;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Aluno;
+
 public class Exclusao_Aluno {
 
 	public static void main(String[] args) {

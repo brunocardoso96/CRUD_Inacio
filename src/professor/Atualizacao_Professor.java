@@ -2,6 +2,8 @@ package professor;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Professor;
+
 public class Atualizacao_Professor {
 
 	public static void main(String[] args) {

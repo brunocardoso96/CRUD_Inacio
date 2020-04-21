@@ -2,9 +2,9 @@ package matricula;
 
 import javax.swing.JOptionPane;
 
-import aluno.Banco_Aluno;
-import curso.Banco_Curso;
-import matricula.Banco_Matricula;
+import Controller.Banco_Aluno;
+import Controller.Banco_Curso;
+import Controller.Banco_Matricula;
 
 public class Atualizacao_Matricula {
 

@@ -1,4 +1,4 @@
-package matricula;
+package Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,39 +6,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import matricula.Conexao_Matricula;
-
-public class Banco_Matricula {
+public class Banco_Sala {
 	
+
 	static Connection conn = null;
 	static Statement stmt = null;
 	
 	static Connection dbConnection = null;
 	static PreparedStatement pstmt = null;
 	
-	
 	public static void Select() {
-		
-		try{
-			  conn = Conexao_Matricula.getDBConnection();
+		 try{
+			  conn = Conexao_Aluno.getDBConnection();
 		      stmt = conn.createStatement();
-		      
 		      String sql;
-		     
-		      sql = "SELECT matricula.id, curso.nome, aluno.nome "
-		      		+ "FROM matricula, curso, aluno "
-		      		+ "WHERE curso.id = curso_id "
-		      		+ "AND aluno.id = aluno_id "; // Ordernar + "ORDER BY curso.nome ASC "
+		      //sql = "SELECT EMPLOYEE_ID, FIRST_NAME FROM EMPLOYEES";
+		      sql = "Select sala.id, sala.nome, curso.nome \n" + 
+		      		"FROM sala, curso\n" + 
+		      		"WHERE curso_id = curso.id;";  // Ordernar "ORDER BY sala.nome ASC;"
 		      
 		      ResultSet rs = stmt.executeQuery(sql);
 
 		      while(rs.next()){
+					/*
+					  String nome = rs.getString("FIRST_NAME"); 
+					  Long id = rs.getLong("EMPLOYEE_ID");
+					 */
 
-		    	  String id = rs.getString("id"); 
+		    	  String nome = rs.getString("sala.nome"); 
+		    	  Long id =	rs.getLong("sala.id");
 		    	  String curso_nome =	rs.getString("curso.nome");
-		    	  String aluno_nome =	rs.getString("aluno.nome");
 					 
-		    	  System.out.println(id + ": " + curso_nome + ": " + aluno_nome);
+		    	  System.out.println(id + ": " + nome + ": " + curso_nome);
 		      }
 		      
 		      rs.close();
@@ -60,17 +59,15 @@ public class Banco_Matricula {
 		         se.printStackTrace();
 		      }
 		   }
-		
 	   
 	}
 	
-	public static void Insert(Long curso_id, Long aluno_id) {
+	public static void Insert(String nome, Long curso_id) {
 		
-		
-		String insertTableSQL = "INSERT INTO escola.matricula (curso_id, aluno_id) VALUES (?, ?)";
- 
+		String insertTableSQL = "INSERT INTO escola.sala (nome, curso_id) VALUES (?, ?)";
+		 
 		try{
-			dbConnection = Conexao_Matricula.getDBConnection();
+			dbConnection = Conexao_Aluno.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(insertTableSQL);
 //		    pstmt.setLong(1, id);
@@ -78,8 +75,8 @@ public class Banco_Matricula {
 //		    pstmt.setString(3, lastName);
 //		    pstmt.setString(4, email);
 		    
-		    pstmt.setLong(1, curso_id);
-		    pstmt.setLong(2, aluno_id);
+		    pstmt.setString(1, nome);
+		    pstmt.setLong(2, curso_id);
 			
 		    pstmt.executeUpdate();
  
@@ -114,10 +111,10 @@ public class Banco_Matricula {
 	
 	public static void Delete(Long id) {
 		
-		String deleteTableSQL = "DELETE from escola.matricula WHERE id = ?";
+		String deleteTableSQL = "DELETE from escola.sala WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Matricula.getDBConnection();
+			dbConnection = Conexao_Aluno.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(deleteTableSQL);
 		    pstmt.setLong(1, id);
@@ -147,20 +144,19 @@ public class Banco_Matricula {
  
 		}
 	
-		
 	}
 	
-	public static void Update(Long id, Long curso_id, Long aluno_id) {
-		String updateTableSQL = "UPDATE escola.matricula SET curso_id = ?, aluno_id = ? WHERE id = ?";
+	public static void Update(Long id, String novoNome, Long curso_id) {
+		String updateTableSQL = "UPDATE escola.sala SET nome = ?, curso_id = ? WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Matricula.getDBConnection();
+			dbConnection = Conexao_Aluno.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(updateTableSQL);
 			
 			
-		    pstmt.setLong(1, curso_id);
-		    pstmt.setLong(2, aluno_id);
+		    pstmt.setString(1, novoNome);
+		    pstmt.setLong(2, curso_id);
 		    pstmt.setLong(3, id);
  
 			// execute update SQL stetement
@@ -195,4 +191,6 @@ public class Banco_Matricula {
 	
 	}
 	
+	
+
 }

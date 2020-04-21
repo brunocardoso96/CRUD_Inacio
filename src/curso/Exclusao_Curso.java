@@ -2,6 +2,8 @@ package curso;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Curso;
+
 public class Exclusao_Curso {
 
 	public static void main(String[] args) {

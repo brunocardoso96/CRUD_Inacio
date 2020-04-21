@@ -1,4 +1,4 @@
-package aluno;
+package Controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,34 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Banco_Aluno {
-	
-	//Select
+public class Banco_Professor {
+
 	static Connection conn = null;
 	static Statement stmt = null;
 	
 	static Connection dbConnection = null;
 	static PreparedStatement pstmt = null;
 	
-	//Metodos do Aluno
-	
 	public static void Select() {
-
-		   try{
+		
+		try{
 			  conn = Conexao_Aluno.getDBConnection();
 		      stmt = conn.createStatement();
-		      String sql;
-		      //sql = "SELECT EMPLOYEE_ID, FIRST_NAME FROM EMPLOYEES";
-		      sql = "SELECT id, nome FROM aluno";
+		      
+		      String sql = "SELECT id, nome FROM escola.professor";
 		      
 		      ResultSet rs = stmt.executeQuery(sql);
 
 		      while(rs.next()){
-					/*
-					  String nome = rs.getString("FIRST_NAME"); 
-					  Long id = rs.getLong("EMPLOYEE_ID");
-					 */
-
+		    	  
 		    	  String nome = rs.getString("nome"); 
 		    	  Long id =	rs.getLong("id");
 					 
@@ -60,17 +52,20 @@ public class Banco_Aluno {
 		      }
 		   }
 	   
-		
 	}
 	
 	public static void Insert(String nome) {
-		
-		String insertTableSQL = "INSERT INTO escola.aluno (nome) VALUES (?)";
+		String insertTableSQL = "INSERT INTO escola.professor (nome) VALUES (?)";
 		 
 		try{
 			dbConnection = Conexao_Aluno.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(insertTableSQL);
+//		    pstmt.setLong(1, id);
+//		    pstmt.setString(2, firstName);
+//		    pstmt.setString(3, lastName);
+//		    pstmt.setString(4, email);
+		    
 		    pstmt.setString(1, nome);
 			
 		    pstmt.executeUpdate();
@@ -97,13 +92,35 @@ public class Banco_Aluno {
 					e.printStackTrace();
 				}
 			}
+ 
 		}
+ 
+	
 	}
 	
 	public static void Delete(Long id) {
 		
-		String deleteTableSQL = "DELETE FROM escola.aluno WHERE id = ?";
- 
+		String deleteTableSQL = "";
+		
+		for(int c = 1; c <= 4; c++) {
+			
+			if(c == 1) {
+				// Delete matricula
+				deleteTableSQL = "DELETE FROM escola.matricula where curso_id = Any (SELECT curso.id FROM curso WHERE professor_id = ?)";
+			}
+			if(c == 2) {
+				//DELETE sala
+				deleteTableSQL = "DELETE FROM escola.sala where curso_id = Any (SELECT curso.id FROM curso WHERE professor_id = ?)";
+			}
+			if(c == 3) {
+				//DELETE curso
+				deleteTableSQL = "DELETE FROM escola.curso WHERE professor_id = ?";
+			}
+			if(c == 4) {
+				//DELETE Professor
+				deleteTableSQL = "DELETE FROM escola.professor WHERE id = ?";
+			}
+
 		try {
 			dbConnection = Conexao_Aluno.getDBConnection();
 			
@@ -114,7 +131,6 @@ public class Banco_Aluno {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e.getMessage());
-			
  
 		} finally {
  
@@ -133,15 +149,17 @@ public class Banco_Aluno {
 					e.printStackTrace();
 				}
 			}
+		
 		}
 	}
+	
 
+	}
+	
 	public static void Update(Long id, String novoNome) {
-
- 
-		//String updateTableSQL = "UPDATE EMPLOYEES SET FIRST_NAME = ? WHERE EMPLOYEE_ID = ?";
-		String updateTableSQL = "UPDATE escola.aluno SET nome = ? WHERE id = ?";
- 
+		
+		String updateTableSQL = "UPDATE escola.professor SET nome = ? WHERE id = ?";
+		 
 		try {
 			dbConnection = Conexao_Aluno.getDBConnection();
 			
@@ -154,7 +172,11 @@ public class Banco_Aluno {
 			// execute update SQL stetement
 			pstmt.execute();
  
+			System.out.println("");
+			System.out.println("");
 			System.out.println("Registro foi atualizado na tabela!");
+			System.out.println("");
+			System.out.println("");
  
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -182,4 +204,5 @@ public class Banco_Aluno {
  
 	
 	}
+	
 }

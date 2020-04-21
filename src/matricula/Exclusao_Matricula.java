@@ -2,6 +2,8 @@ package matricula;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Matricula;
+
 public class Exclusao_Matricula {
 
 	public static void main(String[] args) {

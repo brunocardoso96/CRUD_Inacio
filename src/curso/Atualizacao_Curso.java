@@ -2,6 +2,8 @@ package curso;
 
 import javax.swing.JOptionPane;
 
+import Controller.Banco_Curso;
+
 
 public class Atualizacao_Curso {
 
