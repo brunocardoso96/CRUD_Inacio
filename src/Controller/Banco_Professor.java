@@ -17,7 +17,7 @@ public class Banco_Professor {
 	public static void Select() {
 		
 		try{
-			  conn = Conexao_Aluno.getDBConnection();
+			  conn = Conexao_Banco.getDBConnection();
 		      stmt = conn.createStatement();
 		      
 		      String sql = "SELECT id, nome FROM escola.professor";
@@ -58,7 +58,7 @@ public class Banco_Professor {
 		String insertTableSQL = "INSERT INTO escola.professor (nome) VALUES (?)";
 		 
 		try{
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(insertTableSQL);
 //		    pstmt.setLong(1, id);
@@ -122,7 +122,7 @@ public class Banco_Professor {
 			}
 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(deleteTableSQL);
 		    pstmt.setLong(1, id);
@@ -161,7 +161,7 @@ public class Banco_Professor {
 		String updateTableSQL = "UPDATE escola.professor SET nome = ? WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(updateTableSQL);
 			

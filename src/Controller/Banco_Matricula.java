@@ -19,7 +19,7 @@ public class Banco_Matricula {
 	public static void Select() {
 		
 		try{
-			  conn = Conexao_Aluno.getDBConnection();
+			  conn = Conexao_Banco.getDBConnection();
 		      stmt = conn.createStatement();
 		      
 		      String sql;
@@ -69,7 +69,7 @@ public class Banco_Matricula {
 		String insertTableSQL = "INSERT INTO escola.matricula (curso_id, aluno_id) VALUES (?, ?)";
  
 		try{
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(insertTableSQL);
 //		    pstmt.setLong(1, id);
@@ -116,7 +116,7 @@ public class Banco_Matricula {
 		String deleteTableSQL = "DELETE from escola.matricula WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(deleteTableSQL);
 		    pstmt.setLong(1, id);
@@ -153,7 +153,7 @@ public class Banco_Matricula {
 		String updateTableSQL = "UPDATE escola.matricula SET curso_id = ?, aluno_id = ? WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(updateTableSQL);
 			

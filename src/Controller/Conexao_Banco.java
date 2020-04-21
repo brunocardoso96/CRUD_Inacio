@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
  
-public class Conexao_Aluno {
+public class Conexao_Banco {
  
 	// Para conexão ao oracle
 	/*

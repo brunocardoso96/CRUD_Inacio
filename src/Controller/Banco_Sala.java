@@ -17,7 +17,7 @@ public class Banco_Sala {
 	
 	public static void Select() {
 		 try{
-			  conn = Conexao_Aluno.getDBConnection();
+			  conn = Conexao_Banco.getDBConnection();
 		      stmt = conn.createStatement();
 		      String sql;
 		      //sql = "SELECT EMPLOYEE_ID, FIRST_NAME FROM EMPLOYEES";
@@ -67,7 +67,7 @@ public class Banco_Sala {
 		String insertTableSQL = "INSERT INTO escola.sala (nome, curso_id) VALUES (?, ?)";
 		 
 		try{
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(insertTableSQL);
 //		    pstmt.setLong(1, id);
@@ -114,7 +114,7 @@ public class Banco_Sala {
 		String deleteTableSQL = "DELETE from escola.sala WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(deleteTableSQL);
 		    pstmt.setLong(1, id);
@@ -150,7 +150,7 @@ public class Banco_Sala {
 		String updateTableSQL = "UPDATE escola.sala SET nome = ?, curso_id = ? WHERE id = ?";
 		 
 		try {
-			dbConnection = Conexao_Aluno.getDBConnection();
+			dbConnection = Conexao_Banco.getDBConnection();
 			
 			pstmt = dbConnection.prepareStatement(updateTableSQL);
 			
