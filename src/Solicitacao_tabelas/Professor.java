@@ -1,16 +1,13 @@
-package Model;
+package Solicitacao_tabelas;
 
 import javax.swing.JOptionPane;
 
-import Controller.Banco_Aluno;
-import Controller.Banco_Professor;
+import Banco.Banco_Professor;
 
-public class ModelProfessor {
+public class Professor {
 
 	public static void main(String[] args) {
-		
-		
-		
+
 		Integer valor = 0;
 		
 		do {

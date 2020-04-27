@@ -1,14 +1,14 @@
-package Model;
+package Solicitacao_tabelas;
 
 import javax.swing.JOptionPane;
 
-import Controller.Banco_Aluno;
-import Controller.Banco_Curso;
-import Controller.Banco_Matricula;
+import Banco.Banco_Aluno;
+import Banco.Banco_Curso;
+import Banco.Banco_Matricula;
 
 //import br.com.inaciojr9.bancosimples.banco.JDBCSelect;
 
-public class ModelMatricula {
+public class Matricula {
 
 	public static void main(String[] args) {
 

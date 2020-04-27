@@ -1,10 +1,10 @@
-package Model;
+package Solicitacao_tabelas;
 
 import javax.swing.JOptionPane;
 
-import Controller.Banco_Curso;
+import Banco.Banco_Curso;
 
-public class ModelCurso {
+public class Curso {
 
 	public static void main(String[] args) {
 		
@@ -28,7 +28,7 @@ public class ModelCurso {
 				case 2:
 					
 					String paramNome = JOptionPane.showInputDialog("Entre com o nome do Curso: ");
-					Controller.Banco_Professor.Select();
+					Banco.Banco_Professor.Select();
 					Integer param_id_professor = Integer.parseInt(JOptionPane.showInputDialog("Entre com o ID o professor: "));
 					Banco_Curso.Insert(paramNome, param_id_professor);
 					break;

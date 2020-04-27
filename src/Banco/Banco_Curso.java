@@ -1,4 +1,4 @@
-package Controller;
+package Banco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

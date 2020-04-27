@@ -1,10 +1,10 @@
-package Model;
+package Solicitacao_tabelas;
 
 import javax.swing.JOptionPane;
 
-import Controller.Banco_Aluno;
+import Banco.Banco_Aluno;
 
-public class ModelAluno {
+public class Aluno {
 
 	public static void main(String[] args) {
 		
